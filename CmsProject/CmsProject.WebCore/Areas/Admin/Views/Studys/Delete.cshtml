@@ -1,0 +1,90 @@
+﻿@model CmsProject.ViewModel.Study.StudyViewModel
+
+@{
+    ViewData["Title"] = "حذف دروس مطالعه";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف '@Model.Name' مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TheoreticalHour)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TheoreticalHour)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PracticalHour)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PracticalHour)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TheoreticalCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TheoreticalCount)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PracticalCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PracticalCount)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LessonType)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTypeCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LessonTypeCode)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeStr)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GradeStr)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+    </form>
+</div>

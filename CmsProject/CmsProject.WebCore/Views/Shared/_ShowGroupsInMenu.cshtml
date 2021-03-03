@@ -1,0 +1,15 @@
+﻿@using CmsProject.Service.Repositories
+@inject IPageGroupRepository _pageGroupRepository
+
+<ul>
+    <li><a asp-area="" asp-controller="Home" asp-action="Index"> صفحه اصلی </a></li>
+    <li>
+        <span>گروه های خبری</span>
+        <ul>
+            @foreach (var item in _pageGroupRepository.GetListGroups())
+            {
+                <li><a href="/Group/@item.ID/@item.GroupTitle">@item.GroupTitle</a></li>
+            }
+        </ul>
+    </li>
+</ul>

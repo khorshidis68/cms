@@ -1,0 +1,76 @@
+﻿@model CmsProject.Utilities.Paging.PagedResult<CmsProject.ViewModel.Study.StudyViewModel>
+
+@{
+    ViewData["Title"] = "لیست دروس مطالعه";
+}
+
+<h2>لیست دروس مطالعه</h2>
+<br />
+<p>
+    <a asp-area="Admin" asp-controller="Studys" asp-action="Create" class="btn btn-success">
+        <i class="fa fa-plus"></i> افزودن دروس مطالعه جدید
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ردیف</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().LessonType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().GradeStr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var i = 1; }
+        @foreach (var item in Model.Results)
+        {
+        <tr>
+            <td>
+                @{
+                    var rowNo = (Model.CurrentPage - 1) * Model.PageSize + i;
+                    i++;
+                }
+                @rowNo
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeStr)
+            </td>
+            <td>
+                <a asp-area="admin" asp-controller="Studys" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary btn-sm">
+                    <i class="fa fa-edit"></i> ویرایش
+                </a>
+                <a asp-area="admin" asp-controller="Studys" asp-action="Details" asp-route-id="@item.ID" class="btn btn-sm btn-info">
+                    <i class="fa fa-bars"></i> جزئیات
+                </a>
+                <a asp-area="admin" asp-controller="Studys" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">
+                    <i class="fa fa-remove"></i> حذف
+                </a>
+            </td>
+        </tr>
+        }
+        <tr>
+            <td colspan="3">
+                @(await Component.InvokeAsync<CmsProject.WebCore.ViewComponents.PagerComponent>(Model))
+            </td>
+        </tr>
+    </tbody>
+</table>

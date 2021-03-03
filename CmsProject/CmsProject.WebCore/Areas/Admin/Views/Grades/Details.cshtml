@@ -1,0 +1,40 @@
+﻿@model CmsProject.DomainClass.Grade.Grade
+
+@{
+    ViewData["Title"] = "جزئیات مقطع تحصیلی";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>مقطع تحصیلی</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DefualtPay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DefualtPay)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParentId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary">ویرایش</a>
+    <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+</div>

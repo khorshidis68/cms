@@ -1,0 +1,70 @@
+﻿@model CmsProject.DomainModelClass.Page.Page
+
+@{
+    ViewData["Title"] = "ویرایش خبر";
+}
+
+<h2>ویرایش</h2>
+
+<h4>خبر</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="ImageName" />
+            <input type="hidden" asp-for="PageVisit" />
+            <input type="hidden" asp-for="CreateDate" />
+            <div class="form-group">
+                <label asp-for="PageGroupID" class="control-label"></label>
+                <select asp-for="PageGroupID" class="form-control" asp-items="ViewBag.PageGroupID"></select>
+                <span asp-validation-for="PageGroupID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageTitle" class="control-label"></label>
+                <input asp-for="PageTitle" class="form-control" />
+                <span asp-validation-for="PageTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <textarea asp-for="ShortDescription" class="form-control"></textarea>
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageText" class="control-label"></label>
+                <textarea rows="10" asp-for="PageText" class="form-control"></textarea>
+                <span asp-validation-for="PageText" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageName" class="control-label"></label>
+                <input type="file" name="imgup" />
+                <span asp-validation-for="ImageName" class="text-danger"></span>
+                <div>
+                    @if (Model.ImageName != null)
+                    {
+                        <span>تصویر قبلی:</span>
+                        <img id="ImageName" src="~/PageImages/@Model.ImageName" class="thumbnail" width="125" height="125" />
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageTags" class="control-label"></label>
+                <input asp-for="PageTags" class="form-control" />
+                <span asp-validation-for="PageTags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="ShowInSlider" /> @Html.DisplayNameFor(model => model.ShowInSlider)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ذخیره" class="btn btn-warning" />
+                <a asp-action="Index" class="btn btn-info">بازگشت به لیست گروه خبر</a>
+            </div>
+        </form>
+    </div>
+</div>

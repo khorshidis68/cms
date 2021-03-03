@@ -1,0 +1,75 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Owner"))
+    {
+        <section class="category-section border-radius">
+            <header class="bg-primary"><i class="fa fa-users"></i> <h3> مدیریت کاربران  </h3></header>
+            <ul class="bg-success">
+                <li><a asp-area="" asp-controller="ManageUser" asp-action="Index"> مدریریت کاربران </a></li>
+                <li><a asp-area="" asp-controller="ManageRole" asp-action="Index"> مدریریت گروههای کاربری </a></li>
+            </ul>
+        </section>
+    }
+
+    <section class="category-section border-radius">
+        <header class="bg-primary">
+            <i class="fa fa-users"></i><h3> @User.Identity.Name خوش آمدید </h3>
+
+        </header>
+        @if (User.IsInRole("Owner") || User.IsInRole("Admin"))
+        {
+    <ul class="bg-info">
+        @*<li><a asp-area="Admin" asp-controller="PageGroups" asp-action="Index"> مدریریت گروه های خبری </a></li>
+        <li><a asp-area="Admin" asp-controller="Pages" asp-action="Index"> مدریریت خبر ها </a></li>*@
+        <li><a asp-area="Admin" asp-controller="Lessons" asp-action="Index"> مدریریت درس ها </a></li>
+        <li><a asp-area="Admin" asp-controller="Grades" asp-action="Index"> مدریریت مقطع تحصیلی </a></li>
+        <li><a asp-area="Admin" asp-controller="TrainingCenters" asp-action="Index"> مدریریت مرکز آموزشی </a></li>
+        <li><a asp-area="Admin" asp-controller="Majors" asp-action="Index"> مدریریت رشته تحصیلی </a></li>
+        <li><a asp-area="Admin" asp-controller="Studys" asp-action="Index"> مدریریت دروس مطالعه </a></li>
+        <li><a asp-area="Admin" asp-controller="EnumEntitys" asp-action="Index"> مدریریت لیست شمارشی </a></li>
+        <li><a asp-area="" asp-controller="ReceivePayment" asp-action="Index"> دریافت شناسه پرداخت </a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="ResetPasswordCurrentUser"> بازیابی رمزعبور </a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="ResetPasswordByAdmin"> تغییر رمز سایر کاربران </a></li>
+        @*<li class="text-danger">
+            <a asp-controller="Account" asp-action="Logout" class="text-danger"> خروج </a>
+        </li>*@
+    </ul>
+            <ul class="bg-warning">
+                <li>
+                    <a>
+                        <form method="post" asp-area="" asp-controller="Account" asp-action="LogOut">
+                            <input type="submit" class="text-danger btn-sm borderRadiuscustom" value="خروج" title="خروج" />
+                        </form>
+                    </a>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="bg-info">
+                <li><a asp-area="" asp-controller="ReceivePayment" asp-action="Index"> دریافت شناسه پرداخت </a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="ResetPasswordCurrentUser"> بازیابی رمزعبور </a></li>
+            </ul>
+            <ul class="bg-warning">
+                <li>
+                    <a>
+                        <form method="post" asp-area="" asp-controller="Account" asp-action="LogOut">
+                            <input type="submit" class="text-danger btn-sm borderRadiuscustom" value="خروج" title="خروج" />
+                        </form>
+                    </a>
+                </li>
+            </ul>
+        }
+    </section>
+}
+else
+{
+    <section class="category-section border-radius">
+        <header class="bg-primary"><i class="fa fa-user"></i> <h3> کاربر مهمان خوش آمدید ! </h3></header>
+        <ul class="bg-info">
+            <li><a asp-area="" asp-action="Login" asp-controller="Account"> ورود به سایت  </a></li>
+            <li><a asp-area="" asp-controller="ReceivePayment" asp-action="Index"> دریافت شناسه پرداخت </a></li>
+        </ul>
+    </section>
+}

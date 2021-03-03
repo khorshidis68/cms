@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CmsProject.DataLayer\CmsProject.DataLayer.csproj" />
+    <ProjectReference Include="..\CmsProject.DomainClass\CmsProject.DomainClass.csproj" />
+    <ProjectReference Include="..\CmsProject.Utilities\CmsProject.Utilities.csproj" />
+    <ProjectReference Include="..\CmsProject.ViewModel\CmsProject.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>

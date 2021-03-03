@@ -1,0 +1,48 @@
+﻿@model CmsProject.DomainClass.Lesson.Lesson
+
+@{
+    ViewData["Title"] = "جزئیات درس";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>درس</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LessonType)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTypeCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LessonTypeCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary">ویرایش</a>
+    <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+</div>

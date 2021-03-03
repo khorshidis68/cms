@@ -1,0 +1,16 @@
+﻿@model IndexRoleViewModel
+@{
+    ViewData["Title"] = "ویرایش گروه";
+}
+<h2>ویرایش گروه</h2>
+<form asp-controller="ManageRole" asp-action="EditRole" asp-route-id="@Model.Id" method="post">
+    <div class="bg-info" asp-validation-summary="ModelOnly"></div>
+    <br />
+
+    <div class="form-group">
+        <label class="control-label">نام گروه :</label>
+        <input class="form-control" asp-for="RoleName" />
+    </div>
+    <button class="btn btn-primary" type="submit">ویرایش</button>
+    <a asp-action="Index" class="btn btn-info">بازگشت به لیست گروه </a>
+</form>

@@ -1,0 +1,43 @@
+﻿@model CmsProject.DomainModelClass.Page.Page
+@using CmsProject.Utilities.Convertor
+
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+<div class="col-md-12 col-sm-12 col-xs-12 pull-left">
+
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index"> خانه </a></li>
+        <li class="breadcrumb-item"><a asp-area="" asp-controller="News" asp-action="ShowAllNews"> اخبار </a></li>
+        <li class="breadcrumb-item"><a href="/Group/@Model.PageGroupID/@ViewData["GroupTitle"]"> @ViewData["GroupTitle"]  </a></li>
+        <li class="breadcrumb-item active"> @Model.PageTitle </li>
+    </ul>
+
+    <section class="single-news border-radius">
+        <header><h2> @Model.PageTitle </h2> <span> <i class="fa fa-calendar"></i>  انتشار : @Model.CreateDate.ToShamsi()</span></header>
+        <article>
+            <p>
+                @Model.ShortDescription
+            </p>
+
+            @if (Model.ImageName != null)
+            {
+                <div>
+                    <img src="~/PageImages/@Model.ImageName" alt="@Model.PageTitle" class="thumbnail" width="250" height="250"/>
+                </div>
+            }
+
+            <p>
+                @Model.PageText
+            </p>
+        </article>
+    </section>
+
+    <div class="keywords border-radius">
+        @foreach (var item in Model.PageTags.Split("-"))
+        {
+            <a href="/Search?param=@item"> @item </a>
+        }
+    </div>
+
+</div>

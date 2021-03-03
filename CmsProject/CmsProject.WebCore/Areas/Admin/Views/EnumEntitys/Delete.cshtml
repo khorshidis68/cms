@@ -1,0 +1,42 @@
+﻿@model CmsProject.DomainClass.EnumEntity.EnumEntity
+
+@{
+    ViewData["Title"] = "حذف لیست شمارشی";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف '@Model.Title' مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupEnumEn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GroupEnumEn)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+    </form>
+</div>

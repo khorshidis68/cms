@@ -1,0 +1,50 @@
+﻿@model CmsProject.ViewModel.Personel.PersonelViewModel
+
+@{
+    ViewData["Title"] = "حذف پرسنل";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف '@Model.PersonFullName' مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonFullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PersonFullName)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PersonCode)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NationCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NationCode)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingCenterStr)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrainingCenterStr)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+    </form>
+</div>

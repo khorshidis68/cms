@@ -1,0 +1,83 @@
+﻿@using CmsProject.Utilities.Convertor
+@model CmsProject.Utilities.Paging.PagedResult<CmsProject.DomainModelClass.Page.Page>
+
+@{
+    ViewData["Title"] = "لیست خبر";
+}
+
+<h2>لیست خبر</h2>
+
+<p>
+    <a asp-area="Admin" asp-controller="Pages" asp-action="Create" class="btn btn-success">
+        <i class="fa fa-plus"></i> افزودن خبر جدید
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ردیف</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().ImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().PageTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().PageGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().PageVisit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results.FirstOrDefault().CreateDate)
+            </th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var i = 1; }
+        @foreach (var item in Model.Results)
+        {
+            <tr>
+                <td>
+                    @{
+                        var rowNo = (Model.CurrentPage - 1) * Model.PageSize + i;
+                        i++;
+                    }
+                    @rowNo
+                </td>
+                <td>
+                    <img src="~/PageImages/@item.ImageName" class="fa-tumblr" style="max-width:50px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageGroup.GroupTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageVisit)
+                </td>
+                <td>
+                    @item.CreateDate.ToShamsi()
+                </td>
+                <td>
+                    <a asp-area="admin" asp-controller="Pages" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary btn-sm">
+                        <i class="fa fa-edit"></i> ویرایش
+                    </a>
+                    <a asp-area="admin" asp-controller="Pages" asp-action="Details" asp-route-id="@item.ID" class="btn btn-sm btn-info">
+                        <i class="fa fa-bars"></i> جزئیات
+                    </a>
+                    <a asp-area="admin" asp-controller="Pages" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">
+                        <i class="fa fa-remove"></i> حذف
+                    </a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="7">
+                @(await Component.InvokeAsync<CmsProject.WebCore.ViewComponents.PagerComponent>(Model))
+            </td>
+        </tr>
+    </tbody>
+</table>

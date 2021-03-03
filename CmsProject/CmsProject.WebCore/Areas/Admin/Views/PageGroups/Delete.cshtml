@@ -1,0 +1,26 @@
+﻿@model CmsProject.DomainModelClass.PageGroup.PageGroup
+
+@{
+    ViewData["Title"] = "حذف گروه خبری";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف '@Model.GroupTitle' مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GroupTitle)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="حذف" class="btn btn-danger" />  
+        <a asp-action="Index" class="btn btn-info">بازگشت به لیست گروه خبر</a>
+    </form>
+</div>

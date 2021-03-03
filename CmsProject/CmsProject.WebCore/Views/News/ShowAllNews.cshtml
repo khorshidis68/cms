@@ -1,0 +1,25 @@
+﻿@model IEnumerable<CmsProject.DomainModelClass.Page.Page>
+@using CmsProject.Utilities.Convertor
+
+@{
+    ViewData["Title"] = "آرشیو کامل خبرها";
+}
+<h2>آرشیو کامل خبرها</h2>
+
+<section class="last-news-section border-radius margin-top-60">
+    <header><i class="icons icon-doc-2"></i>  <h3> آرشیو خبرها </h3> </header>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <img class="border-radius" height="120" width="120" src="/PageImages/@item.ImageName">
+                <h2> <a href="/News/@item.ID"> @item.PageTitle </a></h2>
+                <p>
+                    @item.ShortDescription
+                </p>
+                <span class="date-publish"><i class="fa fa-calendar"></i> انتشار : @item.CreateDate.ToShamsi() </span>
+                <a href="/News/@item.ID" class="more-link"><i class="icons icon-more"></i></a>
+            </li>
+        }
+    </ul>
+</section>

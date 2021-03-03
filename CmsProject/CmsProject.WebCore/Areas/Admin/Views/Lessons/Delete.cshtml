@@ -1,0 +1,51 @@
+﻿@model CmsProject.DomainClass.Lesson.Lesson
+
+@{
+    ViewData["Title"] = "حذف درس";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف '@Model.Title' مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LessonType)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTypeCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LessonTypeCode)
+        </dd>
+    </dl>
+
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+﻿@model CmsProject.DomainClass.Major.Major
+
+@{
+    ViewData["Title"] = "حذف رشته تحصیلی";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف '@Model.Name' مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GradeTitle)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+    </form>
+</div>

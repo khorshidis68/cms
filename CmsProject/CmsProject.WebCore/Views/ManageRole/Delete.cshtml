@@ -1,0 +1,22 @@
+﻿@model IndexRoleViewModel
+@{
+    ViewData["Title"] = "حذف گروه";
+}
+<h2>حذف</h2>
+<h3>آیا از حذف '@Model.RoleName' مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">بازگشت به لیست گروه کاربری</a>
+    </form>
+</div>

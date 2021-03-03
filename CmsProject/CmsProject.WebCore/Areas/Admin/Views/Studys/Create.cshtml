@@ -1,0 +1,68 @@
+﻿@model CmsProject.ViewModel.Study.StudyViewModel
+
+@{
+    ViewData["Title"] = "ایجاد دروس مطالعه";
+}
+
+<h2>ایجاد</h2>
+
+<h4>دروس مطالعه</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TheoreticalHour" class="control-label"></label>
+                <input asp-for="TheoreticalHour" class="form-control" />
+                <span asp-validation-for="TheoreticalHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PracticalHour" class="control-label"></label>
+                <input asp-for="PracticalHour" class="form-control" />
+                <span asp-validation-for="PracticalHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TheoreticalCount" class="control-label"></label>
+                <input asp-for="TheoreticalCount" class="form-control" />
+                <span asp-validation-for="TheoreticalCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PracticalCount" class="control-label"></label>
+                <input asp-for="PracticalCount" class="form-control" />
+                <span asp-validation-for="PracticalCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LessonType" class="control-label"></label>
+                <input asp-for="LessonType" class="form-control" />
+                <span asp-validation-for="LessonType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LessonTypeCode" class="control-label"></label>
+                <input asp-for="LessonTypeCode" class="form-control" />
+                <span asp-validation-for="LessonTypeCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GradeStr" class="control-label"></label>
+                <select asp-for="GradeId" asp-items="@ViewBag.Gradelist" class="form-control"></select>
+                <span asp-validation-for="GradeStr" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="ثبت" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+            </div>
+        </form>
+    </div>
+</div>

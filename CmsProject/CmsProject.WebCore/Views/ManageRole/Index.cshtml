@@ -1,0 +1,46 @@
+﻿@model List<IndexRoleViewModel>
+@{
+    ViewData["Title"] = "لیست گروه ها";
+}
+<h2>مدیریت گروه ها</h2>
+<p>
+    <a asp-controller="ManageRole" asp-action="AddRole" class="btn btn-success">
+        <i class="fa fa-plus"></i> افزودن گروه کاربری جدید
+    </a>
+</p>
+
+@if (!Model.Any())
+{
+    <h1>گروهی یافت نشد</h1>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("نام گروه")
+                </th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleName)
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="ManageRole" asp-action="EditRole" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                            <i class="fa fa-edit"></i> ویرایش
+                        </a>
+                        <a asp-area="" asp-controller="ManageRole" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                            <i class="fa fa-remove"></i> حذف
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,32 @@
+﻿@model CmsProject.DomainClass.Major.Major
+
+@{
+    ViewData["Title"] = "جزئیات رشته تحصیلی";
+}
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>رشته تحصیلی</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GradeTitle)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary">ویرایش</a>
+    <a asp-action="Index" class="btn btn-info">بازگشت به لیست</a>
+</div>

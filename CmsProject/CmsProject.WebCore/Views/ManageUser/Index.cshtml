@@ -1,0 +1,81 @@
+﻿@model List<IndexViewModel>
+@{
+    ViewData["Title"] = "لیست کاربران";
+}
+<h2>مدیریت کاربران</h2>
+<p>
+    <a asp-controller="Account" asp-action="Register" class="btn btn-success">
+        <i class="fa fa-plus"></i> افزودن کاربر جدید
+    </a>
+</p>
+
+@if (!Model.Any())
+{
+    <h1>کاربری یافت نشد</h1>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("نام")
+                </th>
+                <th>
+                    @Html.DisplayName("نام خانوادگی")
+                </th>
+                <th>
+                    @Html.DisplayName("نام کاربری")
+                </th>
+                <th>
+                    @Html.DisplayName("ایمیل")
+                </th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="ManageUser" asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                            <i class="fa fa-user"></i> ویرایش کاربر
+                        </a>
+
+                        <a asp-area="" asp-controller="ManageUser" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                            <i class="fa fa-user-times"></i> حذف کاربر
+                        </a>
+
+                        <br />
+
+                        <a asp-area="" asp-controller="ManageUser" asp-action="AddUserToRole" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                            <i class="fa fa-group"></i> افزودن گروه به کاربر
+                        </a>
+
+                        <a asp-area="" asp-controller="ManageUser" asp-action="RemoveUserFromRole" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                            <i class="fa fa-remove"></i> حذف گروه کاربر
+                        </a>
+                        <br />
+
+                        <a asp-area="" asp-controller="ManageUser" asp-action="UpdateSecurityStamp" asp-route-id="@item.Id" class="btn btn-info btn-sm"
+                           title="بعد از تغییر در سطح دسترسی گروه های کاربر، به منظور اعمال تغییرات در همان لحظه از این دکمه استفاده میکنیم. زمان پیش فرض تغییرات 30 دقیقه یکبار میباشد">
+                            <i class="fa fa-refresh"></i> به روز رسانی تنظیمات کاربر
+                        </a> @*Update Security stamp*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
